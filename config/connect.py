@@ -1,8 +1,10 @@
 #!/usr/bin/python
 
 import configparser
+
 import sentry_sdk
 from sentry_sdk import capture_exception
+
 
 class SmartMeterConfig:
     # global variables
