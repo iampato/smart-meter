@@ -7,10 +7,10 @@ then run `make get` to install the dependencies and `make run` with the terminal
 
 ## Technology stack
 Techonology stack for smart meter includes:
-    * Python 3.8.5
-    * MQTT - Communication channel
-    * MongoDB - Database layer
-    * Sentry - For error reporting
+* Python 3.8.5
+* MQTT - Communication channel
+* MongoDB - Database layer
+* Sentry - For error reporting
 
 ## Tests
 There is work to-do in this sector
