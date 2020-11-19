@@ -1,12 +1,14 @@
 #!/usr/bin/python
 
 import configparser
-from utils.error_handler import SmartMeterErrorHandler  
-
+import sentry_sdk
+from sentry_sdk import capture_exception
 
 class SmartMeterConfig:
     # global variables
-    errorHandler = SmartMeterErrorHandler()
+
+    # sentry
+    sentry_url: str
 
     # Database credentials
     database_address: str
@@ -28,6 +30,10 @@ class SmartMeterConfig:
             parser.read('config/config.ini')
             if len(parser) == 1:
                 raise "Failed to open/find all files"
+
+            # sentry
+            self.sentry_url = parser.get('sentry', 'url')
+
             # db
             self.database_address = parser.get('database', 'address')
             self.database_user = parser.get('database', 'user')
@@ -42,6 +48,8 @@ class SmartMeterConfig:
             self.mqtt_password = parser.get('MQTT', 'password')
             self.mqtt_port = parser.getint('MQTT', 'port')
         except Exception as e:
-            self.errorHandler.report(str(e))
+            self.errorHandler.report(e)
 
-
+    def sentry_reporter(self, exception):
+        sentry_sdk.init(self.sentry_url, traces_sample_rate=1.0,)
+        return capture_exception(exception)
