@@ -2,6 +2,7 @@
 
 import configparser
 
+import pymongo
 import sentry_sdk
 from sentry_sdk import capture_exception
 
