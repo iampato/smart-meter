@@ -1,4 +1,6 @@
 # Smart-Meter
+![Python application](https://github.com/Iampato/Smart-Meter/workflows/Python%20application/badge.svg?branch=master)
+
 A python project that aims to a make smart meter server that communicates on MQTT and uses a MongoDB
 
 ## How to run
